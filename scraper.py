@@ -84,7 +84,7 @@ def make_club(soup):
     clublist = []
     temp = get_clubs(soup)
     for c in temp:
-        tempclub = Club(get_club_name(c), get_club_description(c))
+        tempclub = Club(get_club_name(c), get_club_tags(c), get_club_description(c), [])
         for tag in get_club_tags(c):
             tempclub.addtag(tag)
         clublist.append(tempclub)
