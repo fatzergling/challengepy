@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
-
+from Club import Club
+import json
 
 def get_html(url):
     """
@@ -48,7 +49,9 @@ def get_clubs(soup):
     This function should return a list of soups with each soup corresponding to the html
     for a single club.
     """
-    return [] # TODO: Implement this function
+    x = get_elements_with_class(soup, 'div', "box")
+    #print(x[0])
+    return x
 
 def get_club_name(club):
     """
@@ -56,7 +59,7 @@ def get_club_name(club):
 
     We've implemented this function for you to demonstrate how to use the provided utility functions.
     """
-    elts = get_elements_with_class(club, 'strong', 'club-name')
+    elts = get_elements_with_class(club, 'strong', "club-name")
     if len(elts) < 1:
         return ''
     return elts[0].text
@@ -65,11 +68,35 @@ def get_club_description(club):
     """
     Extract club description from a soup containing a single club.
     """
-    return '' # TODO: Implement this function
+    elts = club.find_all('em')
+    if len(elts) < 1:
+        return ''
+    return elts[0].text
 
 def get_club_tags(club):
-    """
-    Get the tag labels for all tags associated with a single club.
-    """
-    return [] # TODO: Implement this function
+    elts = get_elements_with_class(club, 'span', 'tag is-info is-rounded')
+    ret = []
+    for e in elts: ret.append(e.text)
+    return ret
+
+def make_club(soup):
+    """ returns a list of club objects"""
+    clublist = []
+    temp = get_clubs(soup)
+    for c in temp:
+        tempclub = Club(get_club_name(c), get_club_description(c))
+        for tag in get_club_tags(c):
+            tempclub.addtag(tag)
+        clublist.append(tempclub)
+    return clublist
+
+def make_json(clubs):
+    """given list of clubs creates json """
+    jsonlist = []
+    for c in clubs:
+        jsonlist.append(c.cjson)
+    return json.dumps(jsonlist)
+
+
+    
 

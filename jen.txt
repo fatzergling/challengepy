@@ -1,0 +1,1 @@
+{"Username": "jen", "Favorites": [], "Clubs": ["Arun Fan Club"]}
