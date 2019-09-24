@@ -8,9 +8,9 @@ from werkzeug.security import *
 import json
 class User:
     
-    def __init__(self, username, clubs, password, login):
+    def __init__(self, username, favorites, clubs, password, login):
         self.username = username
-        self.favorites = []
+        self.favorites = favorites
         self.clubs = clubs
         self.password = password
         self.login = False
@@ -21,6 +21,17 @@ class User:
         
     def addclub(self,club):
         self.clubs.append(club)  
+        
+    def addfav(self,club):
+        self.favorites.append(club)    
+        
+    def delclub(self,club):
+        if club in self.clubs:
+            self.clubs.remove(club)
+        
+    def delfav(self,club):
+        if club in self.favorites:
+            self.favorites.remove(club)  
         
     def ujson(self):
         json_data = {}
@@ -57,28 +68,18 @@ class User:
 def read(username):
     fileread = open(str(username)+ ".txt","r")
     temp = json.load(fileread)
-    ret = User(temp["Username"], temp["Clubs"], temp["Password"], temp["Log"])
-    ret
+    ret = User(temp["Username"], temp["Favorites"], temp["Clubs"], temp["Password"], temp["Log"])
     return ret
 
 
 
         
         
-jen = User("jen", [], "password", False)
+jen = User("jen", [], [], "password", False)
 jen.addclub("Arun Fan Club")
 jen.hashpass()
 print(jen.username)
 jen.write()
-Test = read("jen")
-print(Test.clubs[0])
-print(jen.password)
-print(Test.password)
-
-hash = generate_password_hash("password")
-print(hash)
-print(jen.checkpass("password"))
-print(Test.checkpass("password"))
 
 
         

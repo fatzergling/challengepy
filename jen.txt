@@ -1,1 +1,1 @@
-{"Username": "jen", "Favorites": [], "Clubs": ["Arun Fan Club"], "Password": "pbkdf2:sha256:150000$zxvPCQmS$3972990b7424b5860a19aa40d102d2f4b44937bf6b23aefeed7a109a0e271f63", "Log": false}
+{"Username": "jen", "Favorites": [], "Clubs": ["Arun Fan Club"], "Password": "pbkdf2:sha256:150000$us1YNOlR$ab4e19fd901f8ae06a576c1cffdf7d6289ab368ded05502a6ea713c0e530a290", "Log": false}

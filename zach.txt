@@ -1,0 +1,1 @@
+{"Username": "zach", "Favorites": [], "Clubs": [], "Password": "pbkdf2:sha256:150000$KPGFOfyG$7d60fca0d8db1cf26947fde7f25705cc29efc4f0a7fd2559281544723e467671", "Log": false}

@@ -19,6 +19,14 @@ class Club:
     def addfav(self,name):
         if name not in self.favorite:
             self.favorite.append(name)
+            
+    def deltag(self, tag):
+        if tag in self.tags:
+            self.tags.remove(tag)
+        
+    def delfav(self,name):
+        if name in self.favorite:
+            self.favorite.remove(name)
         
     
     def getfav(self):

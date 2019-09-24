@@ -9,17 +9,6 @@
       "Who_Loves_Me?": []
    },
    {
-      "Club_Name": "Penn Labs",
-      "Tags": [
-         "Technology",
-         "Programming",
-         "Technology",
-         "Programming"
-      ],
-      "Description": "Coolest group of student devs to ever exist",
-      "Who_Loves_Me?": []
-   },
-   {
       "Club_Name": "Penn Program for Potential Procrastinators",
       "Tags": [
          "Procrastination",
@@ -1863,6 +1852,17 @@
          "Meme"
       ],
       "Description": "We do things related with Augmented Reality, Artificial Intelligence, Machine Learning, and Actionable Analytics!",
+      "Who_Loves_Me?": []
+   },
+   {
+      "Club_Name": "Penn Labs",
+      "Tags": [
+         "Technology",
+         "Programming",
+         "Technology",
+         "Programming"
+      ],
+      "Description": "Coolest group of student devs to ever exist",
       "Who_Loves_Me?": []
    }
 ]
