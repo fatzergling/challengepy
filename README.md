@@ -21,5 +21,6 @@ Routes (for the server):
 - /login: Login into your user with a password. 
 - /logout: Logout of the system.
 - /register: Register a new user into the system.
+
 For trial user jen, she is part of Arun Fan Club and her password is password.
 I added an unfavorite system as well as a secure login system to the API.
