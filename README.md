@@ -9,6 +9,8 @@ String username, String password, string list favorites(stores favorites), strin
 The Club file contains the Club class, which has 4 variables: string club name, string list tags (contains tags), string description, string list favorites (stores users that favorited it)
 The scrapper scrapes the data from the Online Clubs with Penn website and stores it in a JSON format based off the Club class.
 Keep in mind that except for the /api/clubs post (which takes a JSON file), all other posts use request.form to activate. 
+
+
 Routes (for the server):
 /: Welcome message for Penn Club Review
 /api: Welcome message for Penn Club Review’s API
