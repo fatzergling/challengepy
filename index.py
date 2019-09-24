@@ -1,8 +1,21 @@
-from flask import Flask, request
+from flask import Flask, request, render_template, redirect, url_for
 from scraper import * # Web Scraping utility functions for Online Clubs with Penn.
-import User
+from werkzeug.security import *
 from Club import Club
-app = Flask(__name__)
+from flask_login import current_user, login_user, LoginManager, login_required, logout_user
+import User
+app = Flask(__name__, template_folder='templates')
+app.secret_key = "I hate you forever"
+
+
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+
+@login_manager.user_loader
+def load_user(username):
+    user = User.read(username)
+    return user
 
 @app.route('/')
 def main():
@@ -12,7 +25,39 @@ def main():
 def api():
     return "Welcome to the Penn Club Review API!."
 
+@app.route('/login', methods=['GET','POST'])
+def login():
+    error = None
+    if current_user.is_authenticated:
+        username = request.form['Username']
+        return redirect(url_for('api'))
+    if request.method == "POST":
+        username = request.form['Username']
+        password = request.form['Password']
+        user = User.read(username)
+        if user:
+            print(user.checkpass(password))
+            if user.checkpass(password):
+                login_user(user)
+                print("TESTING")
+                return redirect('api')
+    return '''<form method="POST">
+                  Username: <input type="text" name="Username"><br>
+                  Password: <input type="text" name="Password"><br>
+                  <input type="submit" value="Submit"><br>
+              </form>'''
+
+@app.route('/logout', methods=['GET'])
+
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('login'))
+
+
+
 @app.route('/api/clubs', methods=['GET','POST'])
+@login_required
 def getclubs():
     if request.method == 'GET':
         fileread = open("clublist.txt","r+")
@@ -37,13 +82,16 @@ def getclubs():
         fileread.close()
         return "Added club " + ret.clubname + " to roster."
 
-
 @app.route('/api/user/<username>', methods=['GET'])
+@login_required
+
 def peek(username):
     user = User.read(username)
     return json.dumps(user.ujson())
 
+
 @app.route('/api/favorite', methods=['GET','POST'])
+@login_required
 def favorite():
     if request.method == 'POST':
         name = request.form['Username']
@@ -74,6 +122,7 @@ def favorite():
 
 
 @app.before_first_request
+
 def setup():
    html = get_clubs_html()
    soup = soupify(html)

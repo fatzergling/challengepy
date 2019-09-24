@@ -1864,14 +1864,5 @@
       ],
       "Description": "We do things related with Augmented Reality, Artificial Intelligence, Machine Learning, and Actionable Analytics!",
       "Who_Loves_Me?": []
-   },
-   {
-      "Club_Name": "Fat",
-      "Tags": [
-         "S",
-         "G"
-      ],
-      "Description": "Fatties",
-      "Who_Loves_Me?": []
    }
 ]
