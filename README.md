@@ -18,9 +18,11 @@ Routes (for the server):
 - /api/unfavorite: Allows a user to unfavorite a specific club.  It returns the amount of times the club has been favorited after the removal
 - /api/save: Allows a user to save the club information in case the server shuts down
 - /api/load: Allows a user to load the club information
-- /login: Login into your user with a password. 
-- /logout: Logout of the system.
+- /login: Login into your user with a password. Once you log in, you will be redirected to /api. Failure to log in will leave you stuck at the login screen.
+- /logout: Logout of the system. You will be redirected to the login screen
 - /register: Register a new user into the system.
 
-For trial user jen, she is part of Arun Fan Club and her password is password.
+For trial user jen, she is part of Arun Fan Club and her password is password. I also added another user called zach, with password zach1. 
+
+
 I added an unfavorite system as well as a secure login system to the API.
