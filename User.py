@@ -78,7 +78,6 @@ def read(username):
 jen = User("jen", [], [], "password", False)
 jen.addclub("Arun Fan Club")
 jen.hashpass()
-print(jen.username)
 jen.write()
 
 

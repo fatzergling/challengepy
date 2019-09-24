@@ -5,7 +5,7 @@ from Club import Club
 from flask_login import current_user, login_user, LoginManager, login_required, logout_user
 import User
 app = Flask(__name__, template_folder='templates')
-app.secret_key = "I hate you forever"
+app.secret_key = "Hey! No looking >:("
 
 
 login_manager = LoginManager()
@@ -58,10 +58,8 @@ def login():
         password = request.form['Password']
         user = User.read(username)
         if user:
-            print(user.checkpass(password))
             if user.checkpass(password):
                 login_user(user)
-                print("TESTING")
                 return redirect('api')
     return '''<form method="POST">
                   Username: <input type="text" name="Username"><br>
